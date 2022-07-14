@@ -1,0 +1,27 @@
+# - Déclaration des fonctions ------------------------------------
+def triangle(a,b,c):
+
+    if a+b<=c or a+c<=b or b+c<=a:
+        return "n'est pas un triangle"
+
+    elif a==b and b==c:
+        return "équilateral"
+
+    elif a==b or a==c or b==c:
+        return "isocèle"
+
+    else:
+        return "scalène"
+
+# - Programme principal ------------------------------------------
+
+print("--------Triangle-------------")
+print()
+a = int(input("Longueur du premier côté: "))
+b = int(input("Longueur du deuxième côté: "))
+c = int(input("Longueur du troisième côté: "))
+
+typeTriangle = triangle(a,b,c)
+print()
+print("Résultat: " + typeTriangle)
+
