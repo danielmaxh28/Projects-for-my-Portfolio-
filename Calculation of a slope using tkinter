@@ -1,0 +1,158 @@
+import tkinter as tk
+
+
+# - Déclaration des fonctions ---------------------------------------------
+
+def cliquePente():
+   # cherche les données des boîtes de texte
+   pointX1 = x1.get()
+   pointY1 = y1.get()
+   pointX2 = x2.get()
+   pointY2 = y2.get()
+
+
+   # calcule la pente
+   if pointX1==pointX2:
+       pente = "infinie"
+
+   else:
+       pente = (pointY2-pointY1)/(pointX2-pointX1)
+       pente = round(pente,0)
+
+
+  # calcul du point milieu
+   milieuX = (pointX1+pointX2) / 2
+   milieuX = round(milieuX,1)
+   milieuY = (pointY1+pointY2) / 2
+   milieuY = round(milieuY,1)
+
+
+   # affiche le résultat
+   
+   lblPente['text'] = "La pente des points ({},{}) et ({},{}) est {}" "et son point milieu est ({},{})".format(pointX1, pointY1, pointX2,pointY2, pente, milieuX, milieuY)
+
+
+
+# - Programme principal ---------------------------------------------------
+fenetre = tk.Tk()
+fenetre.title("Pente")
+fenetre['bg']= "#2b592a"
+
+
+# Titre du programme
+lblTitre = tk.Label(fenetre)
+lblTitre['text'] = "Calcul de la pente"
+lblTitre['background'] = "#2b592a"
+lblTitre['foreground'] = "#d3dbd3"
+lblTitre['font'] = "Arial 18"
+lblTitre.grid(row=0, column=0, columnspan=4, sticky=tk.N, pady=10)
+
+
+# Affiche les sous-titres
+lblSousTitreX = tk.Label(fenetre)
+lblSousTitreX['text'] = "Coordonnée X"
+lblSousTitreX['background'] = "#2b592a"
+lblSousTitreX['foreground'] = "#d3dbd3"
+lblSousTitreX['font'] = "Times 15"
+lblSousTitreX.grid(row=1, column=0, columnspan=2, padx=5, pady=5, sticky=tk.W)
+
+
+lblSousTitreY = tk.Label(fenetre)
+lblSousTitreY['text'] = "Coordonnée Y"
+lblSousTitreY['background'] = "#2b592a"
+lblSousTitreY['foreground'] = "#d3dbd3"
+lblSousTitreY['font'] = "Times 15"
+lblSousTitreY.grid(row=1, column=2, columnspan=2, padx=50, pady=5, sticky=tk.W)
+
+
+# Entrée de la coordonnée X1
+lblX1 = tk.Label(fenetre)
+lblX1['text'] = "X = "
+lblX1['background'] = "#2b592a"
+lblX1['foreground'] = "#d3dbd3"
+lblX1['font'] = "Arial 15"
+lblX1.grid(row=2, column=0, padx=5, pady=5)
+
+
+x1 = tk.IntVar()
+txtX1 = tk.Entry(fenetre)
+txtX1['font'] = "Arial 15"
+txtX1['width'] = 10
+txtX1['textvariable'] = x1
+txtX1.grid(row=2, column=1, padx=5, pady=5)
+
+
+# Entrée de la coordonnée X2
+lblX2 = tk.Label(fenetre)
+lblX2['text'] = "X = "
+lblX2['background'] = "#2b592a"
+lblX2['foreground'] = "#d3dbd3"
+lblX2['font'] = "Arial 15"
+lblX2.grid(row=2, column=2, padx=(50,5), pady=5)
+
+
+x2 = tk.IntVar()
+txtX2 = tk.Entry(fenetre)
+txtX2['font'] = "Arial 15"
+txtX2['width'] = 10
+txtX2['textvariable'] = x2
+txtX2.grid(row=2, column=3, padx=5, pady=5)
+
+
+
+# Entrée de la coordonnée Y1
+lblY1 = tk.Label(fenetre)
+lblY1['text'] = "Y = "
+lblY1['background'] = "#2b592a"
+lblY1['foreground'] = "#d3dbd3"
+lblY1['font'] = "Arial 15"
+lblY1.grid(row=3, column=0, padx=5, pady=5)
+
+
+y1 = tk.IntVar()
+txtY1 = tk.Entry(fenetre)
+txtY1['font'] = "Arial 15"
+txtY1['width'] = 10
+txtY1['textvariable'] = y1
+txtY1.grid(row=3, column=1, padx=5, pady=5)
+
+
+# Entrée de la coordonnée X2
+lblY2 = tk.Label(fenetre)
+lblY2['text'] = "Y = "
+lblY2['background'] = "#2b592a"
+lblY2['foreground'] = "#d3dbd3"
+lblY2['font'] = "Arial 15"
+lblY2.grid(row=3, column=2, padx=(50,5), pady=5)
+
+
+y2 = tk.IntVar()
+txtY2 = tk.Entry(fenetre)
+txtY2['font'] = "Arial 15"
+txtY2['width'] = 10
+txtY2['textvariable'] = y2
+txtY2.grid(row=3, column=3, padx=5, pady=5)
+
+
+# Bouton Calculer la pente
+btnCalculer = tk.Button(fenetre)
+btnCalculer['text'] = "Calculer la pente"
+btnCalculer['font'] = "Arial 15"
+btnCalculer['width'] = 35
+btnCalculer['command'] = cliquePente
+btnCalculer.grid(row=4, column=0, columnspan=4, padx=5, pady=5)
+
+
+
+# Label pour afficher la pente
+lblPente = tk.Label(fenetre)
+lblPente['text'] = ""
+lblPente['background'] = "#2b592a"
+lblPente['foreground'] = "#d3dbd3"
+lblPente['font'] = "Arial 15"
+lblPente['wraplength'] = 375
+lblPente.grid(row=5, column=0, columnspan=4, padx=5, pady=5)
+
+
+fenetre.mainloop()
+
