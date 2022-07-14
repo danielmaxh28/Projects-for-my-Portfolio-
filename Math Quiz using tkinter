@@ -1,0 +1,132 @@
+# Nom : Daniel-Max Hongerlood
+# Titre : 3_ES - Tuteur mathématiques
+# Description : Programme qui quiz un usager avec un calcul au hasard en utilisant Tkinter
+
+
+
+# Importation des modules ------------------------------------------------
+import tkinter as tk
+import random
+
+# Importation du variable global
+r = 0
+equationquestion = 0
+
+
+# Definition des fonctions --------------------------------------------------------
+def cliqueQuestion ():
+  global r
+  global equationquestion
+  global Score
+  num1 = random.randrange(-100, 100)
+  num2 = random.randrange(-100, 100)
+  e = random.randrange(1, 4)
+  if e == 1:
+    equationquestion = num1 + num2
+  elif e == 2:
+    equationquestion = num1 - num2
+  elif e == 3:
+    equationquestion = num1 * num2
+  elif e == 4:
+    equationquestion = num1 / num2
+  r = round(equationquestion, 1)
+  if e == 1:
+    symbole = "+"
+  elif e == 2:
+    symbole = "/"
+  elif e == 3:
+    symbole = "*"
+  elif e == 4:
+    symbole = "-"
+  if e <= 4:
+    if num1 > 0 and num2 > 0:
+      lblQuestion["text"] = "{} {} {} = ".format(num1, symbole, num2)
+    if num1 < 0:
+      lblQuestion["text"] = "({}) {} {} = ".format(num1, symbole, num2)
+    if num2 < 0:
+      lblQuestion["text"] = "{} {} ({}) = ".format(num1, symbole, num2)
+    if num1 < 0 and num2 < 0:
+      lblQuestion["text"] = "({}) {} ({}) = ".format(num1, symbole, num2)
+  lblQuestion.pack()
+
+
+def CliqueConfirmation():
+  vraireponse = Réponse.get()
+  if r == vraireponse:
+    lblCorrigé["text"] = "Bravo! Tu as eu la bonne réponse."
+  else:
+    lblCorrigé["text"] = "Désolé, tu as pas eu la bonne réponse, la bonne réponse est {}!".format(r)
+
+
+# Programme principal --------------------------------------------------------------------------------
+
+# Fenêtre
+fenetre = tk.Tk()
+fenetre.title("Jeu questionnaire")
+fenetre['bg']= "#3967a8"
+fenetre.geometry("600x400")
+
+# Titre du programme
+lblMathQuiz = tk.Label(fenetre)
+lblMathQuiz['text'] = "Jeu questionnaire de Math!"
+lblMathQuiz['font'] = "Arial 25"
+lblMathQuiz['fg'] = "Blue"
+lblMathQuiz['bg'] = "#3967a8"
+lblMathQuiz["wraplength"] = 400
+lblMathQuiz.grid(row=0, column=0, columnspan=3,sticky=tk.N, padx=75, pady=5)
+
+# Cadre et Label pour questionner l'usager
+
+cadreQuestion = tk.Frame(fenetre)
+cadreQuestion["width"]= 200
+cadreQuestion["height"] = 30
+cadreQuestion["background"] = "#3967a8"
+cadreQuestion["relief"] = tk.RAISED
+cadreQuestion["borderwidth"] = 4
+cadreQuestion.grid(row=1, column=1, pady=5)
+
+lblQuestion = tk.Label(cadreQuestion)
+lblQuestion["text"] = ""
+lblQuestion["width"] = 10
+lblQuestion["font"] = "Arial 12"
+lblQuestion.pack()
+
+# Entrée pour que l'usager met sa réponse
+Réponse = tk.IntVar()
+txtRéponse = tk.Entry(fenetre)
+txtRéponse["width"] = "5"
+txtRéponse ["font"] = "Arial 12"
+txtRéponse["textvariable"] = Réponse
+txtRéponse.grid(row=3, column=1,pady=5)
+
+# Bouton pour confirmer la réponse de l'usager
+btnConfirmation = tk.Button(fenetre)
+btnConfirmation["text"] = "Êtes vous sûr de votre réponse ? Appuyez pour confirmer!"
+btnConfirmation["font"] = "Arial 12"
+btnConfirmation["command"] = CliqueConfirmation
+btnConfirmation.grid(row=5, column=1, pady=5)
+
+# Bouton pour que l'usager demande une autre question
+btnQuestion = tk.Button(fenetre)
+btnQuestion["text"] = "Appuyez pour une nouvelle question!"
+btnQuestion["font"] = "Arial 12"
+btnQuestion["command"] = cliqueQuestion
+btnQuestion.grid(row=2, column=1,pady=5)
+
+# Cadre et Label pour le corrigé de la question
+cadreCorrigé = tk.Frame(fenetre)
+cadreCorrigé["width"] = 400
+cadreCorrigé["height"] = 80
+cadreCorrigé["bg"] = "#3967a8"
+cadreCorrigé["relief"] = tk.RAISED
+cadreCorrigé["borderwidth"] = 5
+cadreCorrigé.grid(row=6, column=1,pady=5)
+
+lblCorrigé = tk.Label(cadreCorrigé)
+lblCorrigé["text"] = ""
+lblCorrigé["width"] = 50
+lblCorrigé["font"] = "Arial 10"
+lblCorrigé.pack()
+
+# Finition du programme
+fenetre.mainloop()
