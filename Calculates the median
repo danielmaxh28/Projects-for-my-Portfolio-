@@ -1,0 +1,22 @@
+# - Variables globales ---------------------------
+nombres = []
+
+# - Programme principal --------------------------
+n = input("Entre un nombre (vide pour arrêter) : ")
+while n!="":
+    nombres.append(int(n))
+    n = input("Entre un nombre (vide pour arrêter) : ")
+
+nombres.sort()
+
+longueur = len(nombres)
+if(longueur%2==1):
+    milieu = longueur//2
+    mediane = nombres[milieu]
+
+else:
+    milieu1 = (longueur-1)//2
+    milieu2 = longueur//2
+    mediane = (nombres[milieu1] + nombres[milieu2]) / 2
+
+print("La médiane est {}".format(mediane))
