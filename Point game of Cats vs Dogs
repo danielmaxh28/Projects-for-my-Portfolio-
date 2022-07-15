@@ -1,0 +1,49 @@
+# Importation des modules 
+import tkinter as tk
+# Commandes
+def cliqueChoix():
+    if (reponse1.get()==1):
+        lblMessage['text']="Tu as perdu. Le chien vaut 1 point."
+    elif (reponse2.get()==2):
+        lblMessage['text']="Tu as gagné. Le chat vaut 2 points."
+    else:
+        lblMessage['text'] = "erreur"
+
+
+# Fenetre
+fenetre=tk.Tk()
+fenetre.title("Question canine")
+
+# Affiche la question 
+lblQuestion=tk.Label(fenetre)
+lblQuestion['text']="Est-ce que tu aimes les chiens ou les chats? Lequel donne plus de points."
+lblQuestion.pack()
+# Création du checkbox du chien
+reponse1=tk.IntVar() #Variable qui va recevoir le choix
+
+chkChien=tk.Checkbutton(fenetre)
+chkChien['onvalue']=1
+chkChien['offvalue']=0
+chkChien['text']="chien"
+chkChien['variable']=reponse1
+chkChien['command']=cliqueChoix
+chkChien.pack()
+#---Création du checkbox du chat-------------
+reponse2=tk.IntVar()
+
+chkChat=tk.Checkbutton(fenetre)
+chkChat['onvalue']=2
+chkChat['offvalue']=0
+chkChat['text']="chat"
+chkChat['variable']=reponse2
+chkChat['command']=cliqueChoix
+chkChat.pack()
+
+
+# Création du label final
+lblMessage=tk.Label(fenetre)
+lblMessage.pack()
+
+# Finition du programme
+fenetre.mainloop()
+
