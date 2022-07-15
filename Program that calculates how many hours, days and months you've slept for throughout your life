@@ -1,0 +1,16 @@
+# Demande la date de naissance et le nombre d'heures de sommeil
+ddn= int(input("Vous êtes né en quelle année? "))
+nbSommeilParJour = int(input("Combien d'heures vous dormez en moyenne par jour"))
+
+# Calcule le nombre de jours et de mois dormi
+age = 2022-ddn
+jour = age*365
+
+heuresSommeil = jour * nbSommeilParJour
+jourSommeil = heuresSommeil // 24
+moisSommeil = jourSommeil // 30
+
+# Affiche le résultat
+print("Depuis votre naissance en {}, vous avez dormi environ {} heures.".format(ddn,heuresSommeil))
+print("Ceci correspond à {} jours.".format(jourSommeil))
+print("ou si vous préférez, {} mois.".format(moisSommeil))
