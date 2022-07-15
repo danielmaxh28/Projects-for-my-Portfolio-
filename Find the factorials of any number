@@ -1,0 +1,14 @@
+print("------------- Factoriel ---------------\n")
+nombre = int(input("Entre un nombre : "))
+factoriel = 1
+calcul = ""
+
+for x in range(1, nombre):
+    factoriel = factoriel * x
+    calcul = calcul + str(x) + "x"
+
+factoriel = factoriel * nombre
+calcul = calcul + str(nombre)
+
+print("{}! = {}".format(nombre,calcul))
+print("{}! = {}".format(nombre,factoriel))
