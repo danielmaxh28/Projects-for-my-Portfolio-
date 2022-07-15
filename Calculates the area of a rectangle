@@ -1,0 +1,71 @@
+
+import tkinter as tk
+
+def cliqueCalculer(largeur=True, hauteur=True, lblReponse=True):
+    # retrouve les données entrées dans les boîtes de texte
+    l= int(largeur.get())
+    h= int(hauteur.get())
+    # calculer et afficher l'aire
+    aire = l*h
+    lblReponse['text']= "L'aire du rectangle est : { }".format(aire)
+    
+
+# Fenetre
+fenetre= tk.Tk()
+fenetre.title("Aire d'un triangle")
+fenetre['bg'] = "#3967a8"
+
+# Titre du programme
+lblTitre = tk.Label(fenetre)
+lblTitre['text'] = "Aire d'un rectangle"
+lblTitre['background'] = "#3967a8"
+lblTitre['foreground'] = "#ffffff"
+lblTitre['font'] = "Arial 20"
+lblTitre.grid(row=0, column=0, columnspan=2, padx=30, pady=5)
+
+# Objets reliés à la largeur
+lblLargeur = tk.Label(fenetre)
+lblLargeur['text'] = "Largeur : "
+lblLargeur['background'] = "#3967a8"
+lblLargeur['foreground'] = "#ebebeb"
+lblLargeur['font'] = "Arial 15 italic"
+lblLargeur.grid(row=1, column=0, padx=5, pady=5)
+
+largeur = tk.StringVar()
+txtLargeur = tk.Entry()
+txtLargeur['width'] = 15
+txtLargeur['font'] = "Arial 15"
+txtLargeur['textvariable'] = largeur
+txtLargeur.grid(row=1, column=1, padx=5, pady=5)
+
+# Objets reliés à la hauteur
+lblHauteur = tk.Label(fenetre)
+lblHauteur['text'] = "Hauteur : "
+lblHauteur['background'] = "#3967a8"
+lblHauteur['foreground'] = "#ebebeb"
+lblHauteur['font'] = "Arial 15 italic"
+lblHauteur.grid(row=2, column=0, padx=5, pady=5)
+
+hauteur = tk.StringVar()
+txtHauteur = tk.Entry()
+txtHauteur['width'] = 15
+txtHauteur['font'] = "Arial 15"
+txtHauteur['textvariable'] = hauteur
+txtLargeur.grid(row=2, column=1, padx=5, pady=5)
+
+# Bouton Calculer
+btnCalculer = tk.Button(fenetre)
+btnCalculer['text'] = "Calculer"
+btnCalculer['font'] = "Arial 15"
+btnCalculer['command'] = cliqueCalculer
+btnCalculer.grid(row=3, column=1, padx=5, pady=5, ipadx=41)
+
+
+lblReponse = tk.Label(fenetre)
+lblReponse['text'] = " "
+lblReponse['background'] = "#3967a8"
+lblReponse['foreground'] = "#ebebeb"
+lblReponse['font'] = "Arial 15 italic"
+lblReponse.grid(row=4, column=0, columnspan=2, padx=5, pady=15)
+
+fenetre.mainloop()
