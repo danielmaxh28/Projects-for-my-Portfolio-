@@ -1,0 +1,18 @@
+import random
+
+# Affiche le message d'acceuil
+print("----------------------------------------------")
+print("  Ce programme va prédire ta personalité!     ")
+print("----------------------------------------------")
+input("\n<appui sur une touche pour commencer>")
+
+# Choisi un nombre entre 1 et 3
+nombre = random.randint(1,3)
+
+# Détermine si on doit afficher "Tu es drôle!"
+if(nombre==1):
+    print("Tu es drôle!")
+elif(nombre==2):
+    print("Tu es fou!")
+else:
+    print("Tu es froid!")
