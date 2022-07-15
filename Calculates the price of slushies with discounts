@@ -1,0 +1,40 @@
+# Nom: Daniel-Max Hongerlood
+# Titre:  Rabais
+# Description du programme: Programme qui calcule le prix de l'achat des
+
+
+# Importation des modules ---------------------------------------------
+import math
+
+
+# Programme principal -------------------------------------------------
+
+# Le prix des Barbotines et les rabais
+nBarbotines = float(input("Bonjour, combien de barbotines voulez-vous acheter?: "))
+print("Le coût avant rabais sera {0:.2f}$".format(nBarbotines))
+if nBarbotines >= 10:
+    print("Tu receveras un rabais de 25%")
+elif nBarbotines >= 5:
+    print("Tu receveras un rabais de 15%")
+elif nBarbotines <= 0:
+    print("Tu receveras aucun rabais")
+print("--------------------------------------------------------------------------------")
+
+# Les rabais et le total de la facture
+Rabais1=(nBarbotines * 0.25)
+Facture1=(nBarbotines - Rabais1)
+if nBarbotines >= 10:
+    print("Ton nouveau prix sera {0:.2f}$".format(Facture1))
+
+Rabais2=(nBarbotines * 0.15)
+Facture2=(nBarbotines - Rabais2)
+if nBarbotines >= 5:
+    print("Ton nouveau prix sera {0:.2f}$".format(Facture2))
+
+if nBarbotines>= 0:
+    print("Tu ne receveras aucun rabais donc le prix sera {0:.2f}$".format(nBarbotines))
+
+print("---------------------------------------------------------------------------------")
+
+
+print("Merci pour votre achat!")
