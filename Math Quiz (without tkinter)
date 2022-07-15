@@ -1,0 +1,71 @@
+# Nom: Daniel-Max Hongerlood
+# Titre:  Tuteur mathématiques
+# Description du programme: Programme qui quiz un usager avec un calcul au hasard
+
+
+# Importation des modules ---------------------------------------------
+import random
+
+# Programme principal -------------------------------------------------
+
+# Collecter les données de l"usager et et l'établissement de symboles mathématiques et du quiz
+def questions():
+    print("-------------- Tuteur mathématiques --------------")
+    nom=input("Quel est votre nom: ")
+    print("Bonjour",nom,"!")
+
+    symbole = random.choice("+-*/")
+    finition = False
+    numquestion = 0
+    questionscorrect = 0
+    # Rassembler toutes les informations pour traiter les opérations mathématiques
+    while not finition:
+        if numquestion < 10 | numquestion >= 0:
+            num1 = random.randrange(0,100)
+            num2 = random.randrange(0,100)
+            print(num1, symbole, num2)
+            réponse=int(input("C'est quoi la réponse"))
+            numquestion= numquestion + 1
+            # Calculer les différentes questions possible avec les opérations mathématiques (Traitement)
+            if symbole =="+":
+                vrairéponse = num1+num2
+                if réponse==vrairéponse:
+                    print("Bravo! Tu as eu la bonne réponse")
+                    questionscorrect = questionscorrect + 1
+                else:
+                    print("Désolé, tu as pas eu la bonne réponse, la bonne réponse est",vrairéponse,"!")
+
+            if symbole == "x":
+                vrairéponse = num1*num2
+                if réponse==vrairéponse:
+                    print("Bravo! Tu as eu la bonne réponse")
+                    questionscorrect = questionscorrect + 1
+                else:
+                    print("Désolé, tu as pas eu la bonne réponse, la bonne réponse est",vrairéponse,"!")
+
+            elif symbole == "-":
+                vrairéponse = num1-num2
+
+                if réponse==vrairéponse:
+                    print("Bravo! Tu as eu la bonne réponse")
+                    questionscorrect = questionscorrect + 1
+                else:
+                    print("Désolé, tu as pas eu la bonne réponse, la bonne réponse est",vrairéponse,"!")
+
+            if symbole == "/":
+                vrairéponse = num1/num2
+                if réponse == vrairéponse:
+                    print("Bravo! Tu as eu la bonne réponse")
+                    questionscorrect = questionscorrect + 1
+                else:
+                    print("Désolé, tu as pas eu la bonne réponse, la bonne réponse est", vrairéponse, "!")
+
+
+        # Afficher le score de l'usager (Sortie)
+        else:
+            finition = True
+    else:
+            print("Bon travail",nom,"! Vous avez fini le quiz")
+            print("Vous avez obtenu un score de " + str(questionscorrect) + "/10 questions.")
+
+questions()
