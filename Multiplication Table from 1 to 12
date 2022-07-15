@@ -1,0 +1,6 @@
+print("------------------------Table de Multiplication-----------------\n")
+tableDe = int(input("Indiquez la table de multiplication à affichée : "))
+
+for x in range(13):
+    produit = tableDe * x
+    print("{0:>10} x {1:2} = {2:>3}".format(x,tableDe,produit))
